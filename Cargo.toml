@@ -1,0 +1,27 @@
+[package]
+name = "op_connect_rs"
+description = "Fetch vaults and items from 1Password Connect."
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache 2.0"
+authors = ["David Skyberg <davidskyberg@gmail.com"]
+keywords = ["rust", "1Password", "vault"]
+
+[dependencies]
+anyhow = "1.0.83"
+chrono = { version = "0.4.38", features = ["serde"] }
+futures = { version = "0.3.30", optional = true }
+log = "0.4.21"
+reqwest = { version = "0.12.4", features = ["blocking", "json"] }
+serde = { version = "1.0.202", features = ["derive"] }
+serde_json = "1.0.117"
+thiserror = "1.0.60"
+zeroize = { version = "1.7.0", features = ["zeroize_derive"] }
+
+[dev-dependencies]
+tokio = { version = "1.37.0", features = ["macros", "rt"] }
+
+[features]
+blocking = []
+async = ["futures"]
+default = ["async"]
